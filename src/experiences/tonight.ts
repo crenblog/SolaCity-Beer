@@ -12,9 +12,9 @@ function clip(id: keyof typeof LEX, label: string): Option {
     layer: lex.layer,
     prior: lex.prior,
     keys: lex.keys,
-    poster: `/media/${folder}/${id}.jpg?v=35`,
-    video: `/media/${folder}/${id}.mp4?v=35`,
-    videoHevc: `/media/${folder}/${id}.hevc.mp4?v=35`,
+    poster: `/media/${folder}/${id}.jpg?v=36`,
+    video: `/media/${folder}/${id}.mp4?v=36`,
+    videoHevc: `/media/${folder}/${id}.hevc.mp4?v=36`,
   };
 }
 

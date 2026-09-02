@@ -36,7 +36,7 @@ copy_src() {
   cp "$src" "$tmp/${1}.src.mp4"
 }
 copy_src aroma_hoppy  lumina_hoppy_up
-copy_src aroma_fruity lumina_fruity_up
+copy_src aroma_fruity grok-video-dbf78d9d-7786-48b9-aed8-fb513ac43286
 copy_src aroma_fresh  lumina_fresh_up
 copy_src aroma_malty  lumina_malty_up
 copy_src aroma_floral lumina_floral_up
