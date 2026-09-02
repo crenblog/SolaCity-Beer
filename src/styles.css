@@ -129,10 +129,11 @@
   }
 
   .scrim-top {
+    /* 밝은 하늘·시장도 글자가 살도록. 넷플릭스식 상단 그라데이션. */
     background: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-ink) 55%, transparent) 0%,
-      color-mix(in oklab, var(--color-ink) 22%, transparent) 48%,
+      color-mix(in oklab, var(--color-ink) 78%, transparent) 0%,
+      color-mix(in oklab, var(--color-ink) 42%, transparent) 46%,
       transparent 100%
     );
   }
@@ -235,6 +236,17 @@
   }
 }
 
+.reel-title {
+  color: #fff;
+  text-shadow:
+    0 1px 1px rgb(0 0 0 / 0.4),
+    0 2px 14px rgb(0 0 0 / 0.5);
+}
+
+.reel-chrome-fill {
+  background: linear-gradient(var(--reel-chrome-top, #1c1b18), var(--reel-chrome-bot, #1c1b18));
+}
+
 .vt-stage {
   view-transition-name: tonight-reel;
   animation: none;
@@ -242,15 +254,23 @@
 
 ::view-transition-old(tonight-reel) {
   animation: reel-dissolve-out 480ms cubic-bezier(0.45, 0.05, 0.55, 0.95) both;
+  mix-blend-mode: normal;
+  width: 100%;
+  height: 100%;
+  overflow: clip;
 }
 
 ::view-transition-new(tonight-reel) {
   animation: reel-dissolve-in 480ms cubic-bezier(0.45, 0.05, 0.55, 0.95) both;
+  mix-blend-mode: normal;
+  width: 100%;
+  height: 100%;
+  overflow: clip;
 }
 
 ::view-transition-group(tonight-reel) {
-  animation-duration: 480ms;
-  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  /* 크기·위치 보간 없음. 페이드만. */
+  animation: none;
 }
 
 html[data-enter-reel] ::view-transition-old(tonight-reel) {

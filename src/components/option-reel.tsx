@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { mediaSrc, neighborIds, pickVideo, prefetchNeighbors, readMediaGate, subscribeMedia, swapToHiWhenReady } from "@/lib/thin-path/gate";
-import { applyThemeColor, samplePosterChrome } from "@/lib/thin-path/chrome";
+import { applyInkChrome, applyThemeColor, samplePosterChrome, sampleVideoChrome } from "@/lib/thin-path/chrome";
 import type { Option } from "@/lib/thin-path/types";
 import { cn } from "@/lib/utils";
 
@@ -15,11 +15,13 @@ export function OptionReel({
   selected,
   onSelect,
   labelledBy,
+  live = true,
 }: {
   options: Option[];
   selected: string | null;
   onSelect: (id: string) => void;
   labelledBy: string;
+  live?: boolean;
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const videosRef = useRef<(HTMLVideoElement | null)[]>([]);
@@ -57,12 +59,41 @@ export function OptionReel({
   }, [options, currentId]);
 
   useEffect(() => {
+    if (!live) {
+      applyInkChrome();
+      return;
+    }
     const option = options.find((item) => item.id === currentId);
     if (!option) return;
-    void samplePosterChrome(option.poster).then((color) => {
-      applyThemeColor(color, true);
+    let gone = false;
+
+    const paint = (sample: { top: string; bot: string; mix: string }) => {
+      if (!gone) applyThemeColor(sample.mix, true, sample);
+    };
+
+    const fromVideo = () => {
+      const video = videosRef.current.find((node) => node && !node.paused) ?? videosRef.current.find(Boolean);
+      if (!video) return false;
+      const sample = sampleVideoChrome(video);
+      if (!sample) return false;
+      paint(sample);
+      return true;
+    };
+
+    void samplePosterChrome(option.poster).then((sample) => {
+      if (!gone && !fromVideo()) paint(sample);
     });
-  }, [currentId, options]);
+
+    const id = window.setInterval(() => {
+      if (fromVideo()) window.clearInterval(id);
+    }, 180);
+    const stop = window.setTimeout(() => window.clearInterval(id), 4000);
+    return () => {
+      gone = true;
+      window.clearInterval(id);
+      window.clearTimeout(stop);
+    };
+  }, [currentId, live, options]);
 
   useLayoutEffect(() => {
     const root = scrollerRef.current;
@@ -139,7 +170,7 @@ export function OptionReel({
   }
 
   return (
-    <div className="absolute inset-0 bg-[var(--reel-chrome,#1c1b18)]">
+    <div className="absolute inset-0 reel-chrome-fill">
       <div
         ref={scrollerRef}
         role="radiogroup"
@@ -224,7 +255,7 @@ function SlideMedia({
   videoRef: (node: HTMLVideoElement | null) => void;
 }) {
   const url = pickVideo(option);
-  // 통째 blob만 재생. 스트리밍하면 저속에서 첫 프레임이 끊긴다.
+  // 통째 blob만 재생. 파일 안 장면은 안 본다. 스트리밍하면 저속에서 끊긴다.
   const [src, setSrc] = useState(() => mediaSrc(url));
   const nodeRef = useRef<HTMLVideoElement | null>(null);
   const buffered = src.startsWith("blob:");

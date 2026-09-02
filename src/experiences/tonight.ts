@@ -3,15 +3,18 @@ import { LEX } from "./lexicon";
 
 function clip(id: keyof typeof LEX, label: string): Option {
   const lex = LEX[id];
+  // 질문별 폴더. q1 향 / q2 맛 / q3 입안. 받는 방식은 그대로 — 앞 두 장 blob.
+  // 새 클립: public/media/q{n}/<id>.mp4 + .hevc.mp4 넣고 ?v= 만 올린다.
+  const folder = { aroma: "q1", taste: "q2", body: "q3" }[lex.layer];
   return {
     id,
     label,
     layer: lex.layer,
     prior: lex.prior,
     keys: lex.keys,
-    poster: `/media/${id}.jpg?v=31`,
-    video: `/media/${id}.mp4?v=31`,
-    videoHevc: `/media/${id}.hevc.mp4?v=31`,
+    poster: `/media/${folder}/${id}.jpg?v=35`,
+    video: `/media/${folder}/${id}.mp4?v=35`,
+    videoHevc: `/media/${folder}/${id}.hevc.mp4?v=35`,
   };
 }
 

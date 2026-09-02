@@ -31,7 +31,7 @@ export function Stage({
     <div
       className={cn(
         "flex justify-center",
-        tone === "reel" ? "h-[var(--vvh,100dvh)] bg-ink" : "min-h-dvh min-h-[100svh] bg-letterbox",
+        tone === "reel" ? "h-[var(--vvh,100dvh)] reel-chrome-fill" : "min-h-dvh min-h-[100svh] bg-letterbox",
       )}
     >
       <div
@@ -40,7 +40,7 @@ export function Stage({
           tone === "result"
             ? "h-dvh min-h-dvh min-h-[100svh] overflow-x-hidden overflow-y-auto overscroll-y-contain bg-result"
             : tone === "reel"
-              ? "h-full overflow-hidden bg-[var(--reel-chrome,#1c1b18)]"
+              ? "h-full overflow-hidden reel-chrome-fill"
               : "min-h-dvh min-h-[100svh] overflow-hidden bg-paper",
         )}
       >

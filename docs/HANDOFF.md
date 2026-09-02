@@ -85,7 +85,7 @@
 
 ## 영상
 
-- `public/media/{id}.mp4` H.264 1080×1920, 무음, 24fps, ~2MB.
+- `public/media/q{1|2|3}/{id}.mp4` H.264 1080×1920, 무음, 24fps, ~2MB.
 - `{id}.hevc.mp4` iPhone.
 - 포스터 jpg + avif.
 - AV1은 안 씀. 지움.

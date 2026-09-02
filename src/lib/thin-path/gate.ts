@@ -15,14 +15,20 @@ function connection() {
 }
 
 /**
- * 해상도는 1080. 줄이지 않는다. 비트만 코덱이 줄인다.
+ * 영상 내용과 무관한 받는 쪽.
+ *
+ * 압축은 scripts/compress-media.sh. 여기는 파일을 열지 않는다.
+ * 어떤 장면이든 같은 순서다.
  *
  * 1. 포스터 JPG     첫 페인트. AVIF 디코드는 아이폰에서 느려서 안 씀.
- * 2. videoAv1       Chrome·Safari 17. canPlayType probably.
+ * 2. videoAv1       Chrome·Safari 17. canPlayType probably. 파일 있을 때만.
  * 3. videoHevc      iOS. hvc1. probably일 때만.
  * 4. video          H.264 High 1080. 나머지.
  * src는 항상 하나. <source> 두 줄은 Chrome이 HEVC를 집고 죽는다.
  * +faststart. HLS 없음.
+ *
+ * 재생은 blob URL만. 스트리밍하면 저속에서 첫 프레임이 끊긴다.
+ * 앞 두 장(질문1의 0,1)을 파일 끝까지 받은 뒤에 입장. 3장째부터는 이웃만.
  */
 export function readMediaGate(): MediaGate {
   if (typeof window === "undefined") {
@@ -77,7 +83,7 @@ export function neighborIds(ids: string[], selected: string | null): Set<string>
   return near;
 }
 
-/** 기기마다 1080 파일 하나. AV1 → HEVC → H.264. */
+/** 기기마다 파일 하나. 장면은 안 본다. AV1 → HEVC → H.264. */
 export function pickVideo(option: { video: string; videoHevc?: string; videoAv1?: string }) {
   if (typeof document === "undefined") return option.video;
   const probe = document.createElement("video");
@@ -117,7 +123,10 @@ function rememberBlob(url: string, blob: Blob) {
 
 const inflight = new Map<string, Promise<void>>();
 
-/** 파일을 통째로 메모리에 둔다. 저속에서도 재생 중 끊기지 않게. */
+/**
+ * 파일을 통째로 메모리에 둔다. 안의 영상이 달라도 같은 fetch.
+ * 받은 뒤에만 재생해서 저속에서 첫 프레임이 끊기지 않게.
+ */
 export function cacheVideo(url: string) {
   if (typeof fetch === "undefined") return Promise.resolve();
   if (blobs.has(url)) return Promise.resolve();
@@ -213,7 +222,8 @@ export function prefetchQuestion(options: (OptionMedia & { id?: string })[]) {
 
 /**
  * 스타트. 앞 두 장을 파일 끝까지 받은 뒤에 입장.
- * 받은 blob으로만 재생해서 저속에서도 첫 프레임부터 끊기지 않음.
+ * 과일·빵·바다 무엇이든 여기 경로만. 내용은 압축 스크립트가 이미 맞춰 둠.
+ * 받은 blob으로만 재생. 45초 안에 안 오면 포스터만 두고 입장.
  */
 export function warmupPath(questions: { options: (OptionMedia & { id?: string })[] }[]) {
   const q1 = questions[0];
