@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { BeerThumb } from "@/components/beer-poster";
-import { Bottle } from "@/components/bottle";
-import { BoothMap } from "@/components/booth-map";
-import { CardSheet } from "@/components/card-sheet";
-import { useFoldChroma } from "@/components/fold-chroma";
-import { Button } from "@/components/ui/button";
-import { pack } from "@/lib/thin-path";
-import { wrapJa } from "@/lib/thin-path/wrap-ja";
-import type { AnswerMap, CompareResult } from "@/lib/thin-path/types";
+import { BeerThumb } from "@/screens/beer-poster";
+import { Bottle } from "@/screens/bottle";
+import { BoothMap } from "@/screens/booth-map";
+import { CardSheet } from "@/screens/card-sheet";
+import { useFoldChroma } from "@/screens/fold-chroma";
+import { Button } from "@/screens/ui/button";
+import { pack } from "@/app";
+import { wrapJa } from "@/app/wrap-ja";
+import type { AnswerMap, CompareResult } from "@/data/types";
 
 export function ResultScreen({
   result,

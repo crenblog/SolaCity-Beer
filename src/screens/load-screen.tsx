@@ -1,4 +1,4 @@
-import { RollingText } from "@/components/v1/skiper27";
+import { RollingText } from "@/screens/v1/skiper27";
 
 const START_LINES = ["グラスを置く。", "泡が立つ。", "今夜、はじまる。"];
 

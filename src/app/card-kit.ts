@@ -1,5 +1,5 @@
-import type { Item } from "./types";
-import { wrapJa } from "./wrap-ja";
+import type { Item } from "@/data/types";
+import { wrapJa } from "@/app/wrap-ja";
 
 /** 기기에서 그리는 카드 3장. 서버 합성 없음. 미리보기와 저장이 같은 paint. */
 export const CARD_TEMPLATES = ["picture", "words", "place"] as const;
@@ -22,7 +22,7 @@ const SAGE = "#6d7a5c";
 const bottleCache = new Map<string, HTMLImageElement>();
 
 export function loadBottle(item: Item): Promise<HTMLImageElement> {
-  const src = item.art ?? "/bottle.png?v=4";
+  const src = item.art ?? "/images/bottle.png?v=4";
   const hit = bottleCache.get(src);
   if (hit?.complete) return Promise.resolve(hit);
   const img = new Image();

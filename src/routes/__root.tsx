@@ -1,8 +1,8 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
-import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { TonightCurtain } from "@/components/tonight-curtain";
-import { PortraitLock } from "@/components/portrait-lock";
+import { PreviewHostBridge } from "@/screens/preview-host-bridge";
+import { TonightCurtain } from "@/screens/tonight-curtain";
+import { PortraitLock } from "@/screens/portrait-lock";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "How many drinks";

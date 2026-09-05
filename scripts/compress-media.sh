@@ -16,16 +16,16 @@
 #
 # 교체할 때
 #   1. scripts/archive-clip.sh q1 aroma_fruity
-#      지금 파일은 public/media/archive/q1/ 로 옮긴다. 덮어쓰지 않음.
+#      지금 파일은 backup or public/videos/archive/q1/ 로 옮긴다. 덮어쓰지 않음.
 #   2. 원본을 artifacts/imagine_videos/<이름>.mp4 에 둔다. 1080이면 그대로.
-#   3. 아래 copy_src 한 줄만 바꾼다. id는 public/media/q{1|2|3}/<id>.mp4 가 된다.
+#   3. 아래 copy_src 한 줄만 바꾼다. id는 public/videos/q{1|2|3}/<id>.mp4 가 된다.
 #   4. 이 스크립트를 돌린다. encode_one 말고 다른 ffmpeg를 쓰지 않는다.
 #   5. tonight.ts clip() 의 ?v= 숫자를 올린다. 캐시 버스트.
 #
 # 앱 쪽은 파일 안을 보지 않는다. 앞 두 장을 blob으로 다 받은 뒤에만 재생한다.
 # =============================================================================
 set -euo pipefail
-dir="${1:-/workspace/public/media}"
+dir="${1:-/workspace/public/videos}"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 

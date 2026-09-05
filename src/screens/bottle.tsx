@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { Item } from "@/lib/thin-path/types";
+import type { Item } from "@/data/types";
 
 /**
  * 병 PNG 규칙. 새 잔을 넣을 때 반드시.
@@ -11,7 +11,7 @@ import type { Item } from "@/lib/thin-path/types";
 export function Bottle({ item, className }: { item: Item; className?: string }) {
   return (
     <img
-      src={item.art ?? "/bottle.png?v=4"}
+      src={item.art ?? "/images/bottle.png?v=4"}
       alt={item.name}
       width={240}
       height={720}

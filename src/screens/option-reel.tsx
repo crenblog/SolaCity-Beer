@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { mediaSrc, neighborIds, pickVideo, prefetchNeighbors, readMediaGate, subscribeMedia, swapToHiWhenReady } from "@/lib/thin-path/gate";
-import { applyInkChrome, applyThemeColor, samplePosterChrome, sampleVideoChrome } from "@/lib/thin-path/chrome";
-import type { Option } from "@/lib/thin-path/types";
+import { mediaSrc, neighborIds, pickVideo, prefetchNeighbors, readMediaGate, subscribeMedia, swapToHiWhenReady } from "@/app/gate";
+import { applyInkChrome, applyThemeColor, samplePosterChrome, sampleVideoChrome } from "@/app/chrome";
+import type { Option } from "@/data/types";
 import { cn } from "@/lib/utils";
 
 type Slide = {

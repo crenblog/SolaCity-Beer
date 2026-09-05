@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
-import { QuestionScreen } from "@/components/question-screen";
-import { Stage } from "@/components/stage";
-import { pack, prefetchNeighbors, prefetchPosters, useLedger, warmupHero } from "@/lib/thin-path";
-import { withStepTransition } from "@/lib/thin-path/step-transition";
+import { QuestionScreen } from "@/screens/question-screen";
+import { Stage } from "@/screens/stage";
+import { pack, prefetchNeighbors, prefetchPosters, useLedger, warmupHero } from "@/app";
+import { withStepTransition } from "@/app/step-transition";
 
 export const Route = createFileRoute("/q/$step")({ component: QuestionPage });
 

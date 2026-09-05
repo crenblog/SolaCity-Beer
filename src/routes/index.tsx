@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { IntroScreen } from "@/components/intro-screen";
-import { Stage } from "@/components/stage";
-import { useLedger, warmupLoadType } from "@/lib/thin-path";
+import { IntroScreen } from "@/screens/intro-screen";
+import { Stage } from "@/screens/stage";
+import { useLedger, warmupLoadType } from "@/app";
 
 export const Route = createFileRoute("/")({ component: Home });
 

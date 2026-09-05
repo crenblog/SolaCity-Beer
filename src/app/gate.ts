@@ -252,7 +252,7 @@ export function waitImage(src: string) {
   });
 }
 
-const HERO = "/bottle.png?v=4";
+const HERO = "/images/bottle.png?v=4";
 
 /** 로딩 글자. 스타트 전에 서체만 풀어 둔다. 영상보다 먼저. */
 export function warmupLoadType() {

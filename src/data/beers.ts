@@ -1,77 +1,7 @@
-import type { ExperiencePack, Option } from "@/lib/thin-path/types";
-import { LEX } from "./lexicon";
+import type { Item } from "@/data/types";
 
-function clip(id: keyof typeof LEX, label: string): Option {
-  const lex = LEX[id];
-  // 질문별 폴더. q1 향 / q2 맛 / q3 입안. 받는 방식은 그대로 — 앞 두 장 blob.
-  // 새 클립: public/media/q{n}/<id>.mp4 + .hevc.mp4 넣고 ?v= 만 올린다.
-  const folder = { aroma: "q1", taste: "q2", body: "q3" }[lex.layer];
-  return {
-    id,
-    label,
-    layer: lex.layer,
-    prior: lex.prior,
-    keys: lex.keys,
-    poster: `/media/${folder}/${id}.jpg?v=39`,
-    video: `/media/${folder}/${id}.mp4?v=39`,
-    videoHevc: `/media/${folder}/${id}.hevc.mp4?v=39`,
-  };
-}
-
-/**
- * 今夜의 한 팩. 질문 3개만. 향·맛·입안이라는 말은 화면에 안 낸다.
- * 사람은 일본어 형용사만 고른다. 분위기는 지정 영상(릴스)이 전달한다.
- * はじまり → さかり → なごり : 한 잔의 시작·피크·끝.
- * 선택지 위→아래 순서 = 논문 총출현(prior). まろやかな는 copy에서만 센다.
- */
-export const tonight: ExperiencePack = {
-  id: "tonight",
-  phases: ["はじまり", "さかり", "なごり"],
-  intro: {
-    lines: [
-      { text: "How many" },
-      { text: "drinks", emphasis: true },
-      { text: "are too many" },
-      { text: "drinks?" },
-    ],
-    start: "スタート",
-  },
-  questions: [
-    {
-      id: "aroma",
-      phase: "はじまり",
-      prompt: "心の向くまま歩くなら、\nどんな道？",
-      confirm: "今夜は、これで。",
-      options: [
-        clip("aroma_fruity", "フルーティーな"),
-        clip("aroma_hoppy", "ホップの"),
-        clip("aroma_fresh", "爽やかな"),
-        clip("aroma_malty", "モルトの"),
-        clip("aroma_floral", "華やかな"),
-      ],
-    },
-    {
-      id: "taste",
-      phase: "さかり",
-      prompt: "ひと休みするなら、\nどんな一杯？",
-      confirm: "一口は、これで。",
-      options: [clip("taste_sweet", "ほのかな甘み"), clip("taste_bitter", "ほろ苦い")],
-    },
-    {
-      id: "body",
-      phase: "なごり",
-      prompt: "帰り道、\nどんな音楽に包まれたい？",
-      confirm: "帰り道は、これで。",
-      options: [
-        clip("body_smooth", "なめらかな"),
-        clip("body_soft", "柔らかな"),
-        clip("body_gentle", "優しい"),
-        clip("body_thin", "爽やかな"),
-        clip("body_full", "まろやかな"),
-      ],
-    },
-  ],
-  items: [
+/** 실제 맥주 7잔. 이름, 양조, 한 줄, 공식 문장, 병 사진. */
+export const beers: Item[] = [
     {
       id: "heiwa-red-ale",
       name: "平和クラフト レッドエール",
@@ -88,7 +18,7 @@ export const tonight: ExperiencePack = {
         text: "「麦芽とホップのみを使って」赤いビールを作りました。フルーツやその他の原料は使っていません。焙煎したモルトは使用せず高温で乾燥させる「焙炒」したモルトを全量使用しているため、麦芽のキャラメル感とともに少し赤ワインのようなアロマが特徴です。またボディもミディアム程度でテーブルビールとして飲み飽きしない味わいとなっています。洋だとレバーペーストなど少し血のニュアンスのある食材、和だと醤油やみりんを使った味わいのものがお勧めです。またレッドエールは、ビールのオリンピックとも呼ばれる、世界で最も権威のあるビール競技会「ワールド・ビア・カップ」にて、 2022年にIRISH-STYLE RED ALE部門で金賞を受賞しました。世界一に輝いたビールをぜひお楽しみください。",
       },
       bottle: "tall",
-      art: "/beers/heiwa-red-ale.png?v=3",
+      art: "/images/beers/heiwa-red-ale.png?v=3",
       booth: "4-2",
       poster: { filename: "平和クラフトレッドエール.png" },
     },
@@ -108,7 +38,7 @@ export const tonight: ExperiencePack = {
         text: "ベースはベルジャン、イーストとホップがアメリカンなウィートエールです。 苦味は少し抑えめで小麦由来の柔らかさがあります。ふわっとオレンジの香りがしてビールが苦手な方にもおすすめ。 隠し味に和歌山県産の柚子ピールも効かせて爽やかな仕上がりになっています｡ お魚料理､野菜料理におすすめです｡",
       },
       bottle: "tall",
-      art: "/beers/heiwa-white-ale.png?v=3",
+      art: "/images/beers/heiwa-white-ale.png?v=3",
       booth: "4-2",
       poster: { filename: "平和クラフトホワイトエール.png" },
     },
@@ -128,7 +58,7 @@ export const tonight: ExperiencePack = {
         text: "オーソドックスなモルト・ホップ・イーストを用いた王道的なペールエールです。 爽やかなホップの香りもありながら、落ち着いて飲める1杯を目指しました。 お肉料理やアメリカンフードに合わせて、しっかり冷やしてお楽しみください。",
       },
       bottle: "tall",
-      art: "/beers/heiwa-pale-ale.png?v=3",
+      art: "/images/beers/heiwa-pale-ale.png?v=3",
       booth: "4-2",
       poster: { filename: "平和クラフトペールエール.png" },
     },
@@ -147,7 +77,7 @@ export const tonight: ExperiencePack = {
         text: "フルーティーな香りと柔らかな酸味 たくさんの酵母がいきています。小麦麦芽特有のほのかな酸味とやわらかな香りが口いっぱいに広がり、苦味の少ないやさしい味わいです。",
       },
       bottle: "tall",
-      art: "/beers/rydeen-weizen.png?v=3",
+      art: "/images/beers/rydeen-weizen.png?v=3",
       booth: "4-2",
       poster: { filename: "ライディーンヴァイツェン.png" },
     },
@@ -166,7 +96,7 @@ export const tonight: ExperiencePack = {
         text: "コクのある中にもすっきりとした味わいに仕上がっています。濃色麦芽が醸し出す香ばしい香りやコク、ほのかに感じる甘みとホップのすっきりとした苦味が特徴のビールです。",
       },
       bottle: "stout",
-      art: "/beers/rydeen-alt.png?v=3",
+      art: "/images/beers/rydeen-alt.png?v=3",
       booth: "4-2",
       poster: { filename: "ライディーンアルト.png" },
     },
@@ -185,7 +115,7 @@ export const tonight: ExperiencePack = {
         text: "ホップの青々とした切れのよい苦味と柑橘系の豊かな香り。麦芽を贅沢に使用し、豊かなモルトの風味と華やかな香りが楽しめます。",
       },
       bottle: "tall",
-      art: "/beers/rydeen-ipa.png?v=3",
+      art: "/images/beers/rydeen-ipa.png?v=3",
       booth: "4-2",
       poster: { filename: "ライディーンIPA.png" },
     },
@@ -204,9 +134,8 @@ export const tonight: ExperiencePack = {
         text: "低温で長期熟成、麦芽の香りとホップの苦味、コクのある味わい。豊かなモルトの風味とさわやかな苦味、クリアな喉越しが特徴です。",
       },
       bottle: "tall",
-      art: "/beers/rydeen-pilsner.png?v=3",
+      art: "/images/beers/rydeen-pilsner.png?v=3",
       booth: "4-2",
       poster: { filename: "ライディーンピルスナー.png" },
     },
-  ],
-};
+];

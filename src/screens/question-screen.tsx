@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { OptionReel } from "@/components/option-reel";
-import { applyInkChrome } from "@/lib/thin-path/chrome";
+import { Button } from "@/screens/ui/button";
+import { OptionReel } from "@/screens/option-reel";
+import { applyInkChrome } from "@/app/chrome";
+import type { Question } from "@/data/types";
 import { cn } from "@/lib/utils";
 
 /** 두 줄 일본어를 읽히는 시간. 탭하면 바로 영상. */

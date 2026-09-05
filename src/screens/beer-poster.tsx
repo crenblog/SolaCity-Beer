@@ -1,5 +1,5 @@
-import { Bottle } from "@/components/bottle";
-import type { Item } from "@/lib/thin-path/types";
+import { Bottle } from "@/screens/bottle";
+import type { Item } from "@/data/types";
 
 export function BeerThumb({ item }: { item: Item }) {
   return (

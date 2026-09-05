@@ -1,4 +1,3 @@
-/** 예전 경로 호환. 새 코드는 @/app, @/data, @/recommend 를 쓴다. */
 export type {
   AnswerMap,
   Axis,

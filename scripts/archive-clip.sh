@@ -4,7 +4,7 @@
 set -euo pipefail
 folder="${1:?q1|q2|q3}"
 id="${2:?clip id}"
-root="/workspace/public/media"
+root="/workspace/public/videos"
 src="$root/$folder"
 stamp="$(date +%Y%m%d-%H%M)"
 dest="$root/archive/$folder/${id}_${stamp}"

@@ -1,4 +1,4 @@
-import { extractTerms } from "@/experiences/lexicon";
+import { extractTerms } from "@/data/lexicon";
 import type {
   AnswerMap,
   CompareResult,
@@ -6,7 +6,7 @@ import type {
   Item,
   KeyStat,
   RankedItem,
-} from "./types";
+} from "@/data/types";
 
 function toVec(bag: Record<string, number>, axes: string[]): number[] {
   return axes.map((axis) => bag[axis] ?? 0);
