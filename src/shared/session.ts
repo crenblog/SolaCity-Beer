@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { tonight } from "@/data/questions";
-import type { AnswerMap } from "@/data/types";
+import { tonight } from "@/questions/questions";
+import type { AnswerMap } from "@/shared/types";
 
 const STORAGE_KEY = "thin-path.ledger.v1";
 

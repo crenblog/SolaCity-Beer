@@ -1,5 +1,5 @@
-import type { Item } from "@/data/types";
-import { wrapJa } from "@/app/wrap-ja";
+import type { Item } from "@/shared/types";
+import { wrapJa } from "@/result/wrap-ja";
 
 /** 기기에서 그리는 카드 3장. 서버 합성 없음. 미리보기와 저장이 같은 paint. */
 export const CARD_TEMPLATES = ["picture", "words", "place"] as const;

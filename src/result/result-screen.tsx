@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { BeerThumb } from "@/screens/beer-poster";
-import { Bottle } from "@/screens/bottle";
-import { BoothMap } from "@/screens/booth-map";
-import { CardSheet } from "@/screens/card-sheet";
-import { useFoldChroma } from "@/screens/fold-chroma";
-import { Button } from "@/screens/ui/button";
-import { pack } from "@/app";
-import { wrapJa } from "@/app/wrap-ja";
-import type { AnswerMap, CompareResult } from "@/data/types";
+import { BeerThumb } from "@/beers/beer-poster";
+import { Bottle } from "@/beers/bottle";
+import { BoothMap } from "@/result/booth-map";
+import { CardSheet } from "@/result/card-sheet";
+import { useFoldChroma } from "@/result/fold-chroma";
+import { Button } from "@/shared/ui/button";
+import { pack } from "@/shared";
+import { wrapJa } from "@/result/wrap-ja";
+import type { AnswerMap, CompareResult } from "@/shared/types";
 
 export function ResultScreen({
   result,

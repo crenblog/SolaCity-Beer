@@ -6,7 +6,7 @@
  * count = 論文の出現数. prior でレール順. パーセントは比較時に割る.
  * 滑らかな + なめらかな は一つ. まろやかな は説明文で数える.
  */
-import type { KeyStat, Layer } from "@/data/types";
+import type { KeyStat, Layer } from "@/shared/types";
 
 export type Lex = {
   layer: Layer;

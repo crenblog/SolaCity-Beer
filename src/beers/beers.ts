@@ -1,4 +1,4 @@
-import type { Item } from "@/data/types";
+import type { Item } from "@/shared/types";
 
 /** 실제 맥주 7잔. 이름, 양조, 한 줄, 공식 문장, 병 사진. */
 export const beers: Item[] = [

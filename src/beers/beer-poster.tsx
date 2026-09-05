@@ -1,5 +1,5 @@
-import { Bottle } from "@/screens/bottle";
-import type { Item } from "@/data/types";
+import { Bottle } from "@/beers/bottle";
+import type { Item } from "@/shared/types";
 
 export function BeerThumb({ item }: { item: Item }) {
   return (

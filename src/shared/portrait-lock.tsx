@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { bindPortraitLock } from "@/app/portrait-lock";
+import { bindPortraitLock } from "@/shared/bind-portrait-lock";
 
 export function PortraitLock() {
   useEffect(() => bindPortraitLock(), []);

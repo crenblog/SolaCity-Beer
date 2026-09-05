@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { mediaSrc, neighborIds, pickVideo, prefetchNeighbors, readMediaGate, subscribeMedia, swapToHiWhenReady } from "@/app/gate";
-import { applyInkChrome, applyThemeColor, samplePosterChrome, sampleVideoChrome } from "@/app/chrome";
-import type { Option } from "@/data/types";
+import { mediaSrc, neighborIds, pickVideo, prefetchNeighbors, readMediaGate, subscribeMedia, swapToHiWhenReady } from "@/shared/gate";
+import { applyInkChrome, applyThemeColor, samplePosterChrome, sampleVideoChrome } from "@/shared/chrome";
+import type { Option } from "@/shared/types";
 import { cn } from "@/lib/utils";
 
 type Slide = {

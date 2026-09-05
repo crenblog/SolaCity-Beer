@@ -1,4 +1,4 @@
-/** 예전 경로 호환. 새 코드는 @/app, @/data, @/recommend 를 쓴다. */
+/** 예전 경로 호환. 새 코드는 @/intro @/questions @/beers @/recommend @/result @/shared 를 쓴다. */
 export type {
   AnswerMap,
   Axis,
@@ -10,7 +10,7 @@ export type {
   Option,
   Question,
   RankedItem,
-} from "@/data/types";
+} from "@/shared/types";
 export { compare, catalog, firstIncompleteStep, isComplete, answerSignature } from "@/recommend/compare";
 export {
   readMediaGate,
@@ -30,7 +30,7 @@ export {
   waitVideoReady,
   mediaSrc,
   subscribeMedia,
-} from "@/app/gate";
-export { pack, useLedger } from "@/app/session";
-export { withStepTransition, dissolveToReel } from "@/app/step-transition";
-export { applyThemeColor, applyInkChrome, samplePosterChrome, sampleVideoChrome } from "@/app/chrome";
+} from "@/shared/gate";
+export { pack, useLedger } from "@/shared/session";
+export { withStepTransition, dissolveToReel } from "@/shared/step-transition";
+export { applyThemeColor, applyInkChrome, samplePosterChrome, sampleVideoChrome } from "@/shared/chrome";

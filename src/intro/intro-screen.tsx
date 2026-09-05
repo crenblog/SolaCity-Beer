@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { useNavigate } from "@tanstack/react-router";
-import { Button } from "@/screens/ui/button";
-import { LoadScreen } from "@/screens/load-screen";
-import { SquigglyText } from "@/screens/squiggly-text";
-import { pack, dissolveToReel, useLedger, warmupLoadType, warmupPath, cacheVideo, pickVideo, prefetchPosters } from "@/app";
+import { Button } from "@/shared/ui/button";
+import { LoadScreen } from "@/intro/load-screen";
+import { SquigglyText } from "@/intro/squiggly-text";
+import { pack, dissolveToReel, useLedger, warmupLoadType, warmupPath, cacheVideo, pickVideo, prefetchPosters } from "@/shared";
 import { cn } from "@/lib/utils";
 
 export function IntroScreen() {

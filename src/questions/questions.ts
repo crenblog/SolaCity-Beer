@@ -1,6 +1,6 @@
-import type { ExperiencePack, Option } from "@/data/types";
-import { beers } from "@/data/beers";
-import { LEX } from "@/data/lexicon";
+import type { ExperiencePack, Option } from "@/shared/types";
+import { beers } from "@/beers/beers";
+import { LEX } from "@/recommend/lexicon";
 
 function clip(id: keyof typeof LEX, label: string): Option {
   const lex = LEX[id];

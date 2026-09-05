@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import { applyThemeColor, bindVisualViewport } from "@/app/chrome";
+import { applyThemeColor, bindVisualViewport } from "@/shared/chrome";
 import { cn } from "@/lib/utils";
 
 const CHROME: Record<"paper" | "result" | "reel", string> = {

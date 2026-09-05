@@ -1,4 +1,4 @@
-import { RollingText } from "@/screens/v1/skiper27";
+import { RollingText } from "@/shared/skiper27";
 
 /**
  * 페스티벌에서 잔을 기다리는 감정. 글자만 바뀌고 4초마다 흩어져 맞춰진다.

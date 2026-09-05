@@ -1,13 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Button } from "@/screens/ui/button";
+import { Button } from "@/shared/ui/button";
 import {
   CARD_LABEL,
   CARD_TEMPLATES,
   renderCard,
   shareCard,
   type CardTemplate,
-} from "@/app/card-kit";
-import type { Item } from "@/data/types";
+} from "@/result/card-kit";
+import type { Item } from "@/shared/types";
 import { cn } from "@/lib/utils";
 
 const PREVIEW_W = 540;

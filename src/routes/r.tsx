@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
-import { CurateScreen } from "@/screens/curate-screen";
-import { ResultScreen } from "@/screens/result-screen";
-import { Stage } from "@/screens/stage";
-import { compare, isComplete, pack, useLedger, warmupHero } from "@/app";
+import { CurateScreen } from "@/result/curate-screen";
+import { ResultScreen } from "@/result/result-screen";
+import { Stage } from "@/shared/stage";
+import { compare, isComplete, pack, useLedger, warmupHero } from "@/shared";
 
 export const Route = createFileRoute("/r")({ component: ResultPage });
 

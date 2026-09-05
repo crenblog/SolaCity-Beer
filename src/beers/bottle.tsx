@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { Item } from "@/data/types";
+import type { Item } from "@/shared/types";
 
 /**
  * 병 PNG 규칙. 새 잔을 넣을 때 반드시.
